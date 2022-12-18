@@ -65,22 +65,21 @@ describe('Compromised challenge', function () {
             " 59 7a 55 34 4e 6a 46 6b 4e 44 51 34 4f 54 4a 6a 5a 47 5a 68 59 7a 42 6a 4e 6d 4d 34 59 7a 49 31 4e 6a 42 69 5a 6a 42 6a 4f 57 5a 69 59 32 52 68 5a 54 4a 6d 4e 44 63 7a 4e 57 45 35"
         const serverResponse2 = "4d 48 67 79 4d 44 67 79 4e 44 4a 6a 4e 44 42 68 59 32 52 6d 59 54 6c 6c 5a 44 67 34" +
             " 4f 57 55 32 4f 44 56 6a 4d 6a 4d 31 4e 44 64 68 59 32 4a 6c 5a 44 6c 69 5a 57 5a 6a 4e 6a 41 7a 4e 7a 46 6c 4f 54 67 33 4e 57 5a 69 59 32 51 33 4d 7a 59 7a 4e 44 42 69 59 6a 51 34"
-        const serverResponseFull = serverResponse1 + serverResponse2;
 
-        const hash1 = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(serverResponse1)); // Private Key
-        const hash2 = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(serverResponse2)); // Private Key
-        const hashFull = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(serverResponseFull)); // Private Key
+        // utf-8 -> base64 -> hex = private key
+        const buff1 = Buffer.from(serverResponse1, 'utf-8');
+        const buff2 = Buffer.from(serverResponse2, 'utf-8');
 
-        const wallet1 = new ethers.Wallet(hash1);
-        const wallet2 = new ethers.Wallet(hash2);
-        const walletFull = new ethers.Wallet(hashFull);
+        console.log("buff1: ", buff1.toString('base64')); //Z-Test
+        console.log("buff2: ", buff2.toString('base64')); //Z-Test
+
+        const wallet1 = new ethers.Wallet(buff1);
+        const wallet2 = new ethers.Wallet(buff2);
         const addr1 = await wallet1.getAddress();
         const addr2 = await wallet2.getAddress();
-        const addrFull = await walletFull.getAddress();
 
         console.log("addr1: ", addr1); //Z-Test
         console.log("addr2: ", addr2); //Z-Test
-        console.log("addrFull: ", addrFull); //Z-Test
         console.log("sources[0]: ", sources[0]); //Z-Test
         console.log("sources[1]: ", sources[1]); //Z-Test
         console.log("sources[2]: ", sources[2]); //Z-Test

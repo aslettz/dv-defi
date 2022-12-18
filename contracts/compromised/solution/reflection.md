@@ -24,3 +24,4 @@ I'll try that and see if it helps us in our search for the private key. Note
 that we need the private key of at least 2 trusted sources in order to corrupt
 the median price.
 
+Still working in this challenge.
