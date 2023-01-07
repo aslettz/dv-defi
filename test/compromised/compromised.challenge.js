@@ -67,8 +67,8 @@ describe('Compromised challenge', function () {
             " 4f 57 55 32 4f 44 56 6a 4d 6a 4d 31 4e 44 64 68 59 32 4a 6c 5a 44 6c 69 5a 57 5a 6a 4e 6a 41 7a 4e 7a 46 6c 4f 54 67 33 4e 57 5a 69 59 32 51 33 4d 7a 59 7a 4e 44 42 69 59 6a 51 34"
 
         // utf-8 -> base64 -> hex = private key?
-        const buff1 = Buffer.from(serverResponse1, 'utf-8');
-        const buff2 = Buffer.from(serverResponse2, 'utf-8');
+        const buff1 = Buffer.from(serverResponse1, 'hex');
+        const buff2 = Buffer.from(serverResponse2, 'hex');
 
         console.log("buff1: ", buff1.toString('base64')); //Z-Test
         console.log("buff2: ", buff2.toString('base64')); //Z-Test
